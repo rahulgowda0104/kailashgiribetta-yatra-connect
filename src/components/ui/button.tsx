@@ -18,6 +18,9 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        divine: "bg-gradient-divine text-primary-foreground hover:shadow-divine transform hover:scale-105 transition-all duration-300",
+        sacred: "bg-gradient-sacred text-primary-foreground hover:shadow-sacred",
+        spiritual: "bg-saffron text-primary-foreground hover:bg-saffron/90 shadow-divine",
       },
       size: {
         default: "h-10 px-4 py-2",
