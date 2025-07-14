@@ -14,7 +14,93 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      participant_registrations: {
+        Row: {
+          address: string
+          age: number
+          agreed_to_terms: boolean
+          created_at: string
+          email: string | null
+          emergency_contact: string
+          full_name: string
+          gender: string
+          id: string
+          medical_conditions: string | null
+          phone: string
+          updated_at: string
+        }
+        Insert: {
+          address: string
+          age: number
+          agreed_to_terms?: boolean
+          created_at?: string
+          email?: string | null
+          emergency_contact: string
+          full_name: string
+          gender: string
+          id?: string
+          medical_conditions?: string | null
+          phone: string
+          updated_at?: string
+        }
+        Update: {
+          address?: string
+          age?: number
+          agreed_to_terms?: boolean
+          created_at?: string
+          email?: string | null
+          emergency_contact?: string
+          full_name?: string
+          gender?: string
+          id?: string
+          medical_conditions?: string | null
+          phone?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      volunteer_registrations: {
+        Row: {
+          availability: string
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          motivation: string
+          phone: string
+          preferred_role: string
+          previous_experience: string | null
+          skills_qualifications: string | null
+          updated_at: string
+        }
+        Insert: {
+          availability: string
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          motivation: string
+          phone: string
+          preferred_role: string
+          previous_experience?: string | null
+          skills_qualifications?: string | null
+          updated_at?: string
+        }
+        Update: {
+          availability?: string
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          motivation?: string
+          phone?: string
+          preferred_role?: string
+          previous_experience?: string | null
+          skills_qualifications?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

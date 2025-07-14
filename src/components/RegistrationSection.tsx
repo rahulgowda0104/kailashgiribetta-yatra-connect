@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Users, Heart, Phone, Mail, MapPin, User } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const RegistrationSection = () => {
   const [formData, setFormData] = useState({
@@ -28,7 +29,7 @@ const RegistrationSection = () => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.agreedToTerms) {
       toast({
@@ -38,24 +39,57 @@ const RegistrationSection = () => {
       });
       return;
     }
-    
-    toast({
-      title: "Registration Successful! 🙏",
-      description: "Har Har Mahadev! Your registration has been submitted. We will contact you soon with further details.",
-    });
-    
-    // Reset form
-    setFormData({
-      name: "",
-      phone: "",
-      email: "",
-      address: "",
-      age: "",
-      gender: "",
-      emergencyContact: "",
-      medicalConditions: "",
-      agreedToTerms: false
-    });
+
+    try {
+      const { error } = await supabase
+        .from('participant_registrations')
+        .insert([
+          {
+            full_name: formData.name,
+            phone: formData.phone,
+            email: formData.email || null,
+            age: parseInt(formData.age),
+            gender: formData.gender,
+            address: formData.address,
+            emergency_contact: formData.emergencyContact,
+            medical_conditions: formData.medicalConditions || null,
+            agreed_to_terms: formData.agreedToTerms
+          }
+        ]);
+
+      if (error) {
+        toast({
+          title: "Registration Failed",
+          description: "There was an error submitting your registration. Please try again.",
+          variant: "destructive"
+        });
+        return;
+      }
+
+      toast({
+        title: "Registration Successful! 🙏",
+        description: "Har Har Mahadev! Your registration has been submitted. We will contact you soon with further details.",
+      });
+      
+      // Reset form
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        address: "",
+        age: "",
+        gender: "",
+        emergencyContact: "",
+        medicalConditions: "",
+        agreedToTerms: false
+      });
+    } catch (error) {
+      toast({
+        title: "Registration Failed",
+        description: "There was an error submitting your registration. Please try again.",
+        variant: "destructive"
+      });
+    }
   };
 
   return (
