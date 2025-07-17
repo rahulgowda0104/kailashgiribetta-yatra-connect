@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar, Clock, MapPin, Route, AlertTriangle, Users } from "lucide-react";
 
@@ -15,32 +16,32 @@ const EventDetails = () => {
 
   const schedule = [
     {
-      day: "July 20, 2025",
+      day: "July 26, 2025",
       events: [
-        { time: "4:00 AM", activity: "Registration & Kanwar Distribution", location: "Chintamani Bus Stand" },
+        { time: "4:00 AM", activity: "Registration & Kanwar Distribution", location: "Narayanhalli Cross" },
         { time: "5:30 AM", activity: "Sacred Water Collection Ceremony", location: "Local Sacred Source" },
-        { time: "6:30 AM", activity: "Yatra Begins - Group Departure", location: "Starting Point" },
+        { time: "6:30 AM", activity: "Yatra Begins - Group Departure", location: "Narayanhalli Cross" },
         { time: "12:00 PM", activity: "Midday Rest & Prasadam", location: "Rest Point 1" },
         { time: "6:00 PM", activity: "Evening Camp Setup", location: "Halfway Point" }
       ]
     },
     {
-      day: "July 21, 2025",
+      day: "July 27, 2025",
       events: [
         { time: "4:00 AM", activity: "Morning Prayers & Departure", location: "Camp" },
         { time: "10:00 AM", activity: "Sacred Darshan Break", location: "Local Temple" },
-        { time: "2:00 PM", activity: "Final Ascent Begins", location: "Base of Kailashgiribetta" },
-        { time: "6:00 PM", activity: "Reach Kailashgiribetta", location: "Shiva Cave Temple" },
-        { time: "7:00 PM", activity: "Sacred Water Offering Ceremony", location: "Cave Temple" }
+        { time: "2:00 PM", activity: "Final Ascent Begins", location: "Base of Kailasagiri" },
+        { time: "6:00 PM", activity: "Reach Kailasagiri Guhanthaara Devalaya", location: "Dakshina Kailasa Kshethra" },
+        { time: "7:00 PM", activity: "Sacred Water Offering Ceremony", location: "Guhanthaara Devalaya" }
       ]
     },
     {
-      day: "July 22, 2025",
+      day: "July 28, 2025",
       events: [
-        { time: "4:00 AM", activity: "Morning Abhishekam", location: "Cave Temple" },
-        { time: "6:00 AM", activity: "Group Meditation & Prayers", location: "Cave Temple" },
+        { time: "4:00 AM", activity: "Morning Abhishekam", location: "Guhanthaara Devalaya" },
+        { time: "6:00 AM", activity: "Group Meditation & Prayers", location: "Dakshina Kailasa Kshethra" },
         { time: "8:00 AM", activity: "Prasadam Distribution", location: "Temple Premises" },
-        { time: "10:00 AM", activity: "Return Journey Begins", location: "Kailashgiribetta" },
+        { time: "10:00 AM", activity: "Return Journey Begins", location: "Kailasagiri Guhanthaara Devalaya" },
         { time: "6:00 PM", activity: "Arrival & Closing Ceremony", location: "Chintamani" }
       ]
     }
@@ -65,8 +66,8 @@ const EventDetails = () => {
                 <CardTitle className="text-xl">Duration</CardTitle>
               </CardHeader>
               <CardContent className="text-center">
-                <p className="text-lg font-semibold">3 Days</p>
-                <p className="text-sm opacity-90">July 20-22, 2025</p>
+                <p className="text-lg font-semibold">Shravanmasa</p>
+                <p className="text-sm opacity-90">July 26-28, 2025</p>
               </CardContent>
             </Card>
 
@@ -76,7 +77,7 @@ const EventDetails = () => {
                 <CardTitle className="text-xl">Distance</CardTitle>
               </CardHeader>
               <CardContent className="text-center">
-                <p className="text-lg font-semibold">~15 km</p>
+                <p className="text-lg font-semibold">6-7 km</p>
                 <p className="text-sm opacity-90">Sacred Walking Route</p>
               </CardContent>
             </Card>
@@ -87,7 +88,7 @@ const EventDetails = () => {
                 <CardTitle className="text-xl">Expected</CardTitle>
               </CardHeader>
               <CardContent className="text-center">
-                <p className="text-lg font-semibold">500+ Devotees</p>
+                <p className="text-lg font-semibold">1000+ Devotees</p>
                 <p className="text-sm opacity-90">First-time Historic Event</p>
               </CardContent>
             </Card>
