@@ -1,11 +1,10 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar, Clock, MapPin, Route, AlertTriangle, Users } from "lucide-react";
 
 const EventDetails = () => {
   const guidelines = [
     "Wear saffron or white attire during the Yatra",
-    "Maintain purity of mind and body throughout the journey",
+    "Maintain purity of mind and body throughout the journey", 
     "Walk barefoot when possible as a mark of devotion",
     "Carry your Kanwar with respect and devotion",
     "Chant 'Bol Bam' and 'Har Har Mahadev' while walking",
@@ -67,7 +66,7 @@ const EventDetails = () => {
               </CardHeader>
               <CardContent className="text-center">
                 <p className="text-lg font-semibold">Shravanmasa</p>
-                <p className="text-sm opacity-90">July 26-28, 2025</p>
+                <p className="text-sm opacity-90">3 Days Sacred Journey</p>
               </CardContent>
             </Card>
 
