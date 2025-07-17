@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Mountain, Users, Calendar, MapPin } from "lucide-react";
 import heroImage from "@/assets/kailashgiribetta-hero.jpg";
@@ -45,18 +46,24 @@ const HeroSection = () => {
           <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
             <Calendar className="h-8 w-8 text-saffron mx-auto mb-3" />
             <h3 className="font-semibold text-lg mb-2">Date</h3>
-            <p className="text-gray-200">July 20-22, 2025</p>
+            <p className="text-gray-200">July 26, 2025</p>
           </div>
           <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
             <MapPin className="h-8 w-8 text-saffron mx-auto mb-3" />
             <h3 className="font-semibold text-lg mb-2">Starting Point</h3>
-            <p className="text-gray-200">Chintamani Bus Stand</p>
+            <p className="text-gray-200">Narayanhalli Cross</p>
           </div>
           <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
             <Mountain className="h-8 w-8 text-saffron mx-auto mb-3" />
             <h3 className="font-semibold text-lg mb-2">Destination</h3>
-            <p className="text-gray-200">Kailashgiribetta Cave Temple</p>
+            <p className="text-gray-200">Kailasagiri Guhanthaara Devalaya, Dakshina Kailasa Kshethra</p>
           </div>
+        </div>
+
+        {/* Duration Banner */}
+        <div className="bg-gradient-divine rounded-lg p-6 mb-8 max-w-2xl mx-auto">
+          <h3 className="text-2xl font-bold mb-2">Sacred Duration</h3>
+          <p className="text-xl">Shravanmasa</p>
         </div>
 
         {/* Call to Action Buttons */}
