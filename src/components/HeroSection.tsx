@@ -1,6 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Mountain, Users, Calendar, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/kailashgiribetta-hero.jpg";
 
 const HeroSection = () => {
@@ -68,24 +69,26 @@ const HeroSection = () => {
 
         {/* Call to Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button 
-            variant="divine" 
-            size="lg" 
-            className="text-lg px-8 py-4"
-            onClick={() => scrollToSection('registration')}
-          >
-            <Users className="mr-2 h-5 w-5" />
-            Register as Participant
-          </Button>
-          <Button 
-            variant="sacred" 
-            size="lg" 
-            className="text-lg px-8 py-4"
-            onClick={() => scrollToSection('volunteer')}
-          >
-            <Mountain className="mr-2 h-5 w-5" />
-            Volunteer for Yatra
-          </Button>
+          <Link to="/register-participant">
+            <Button 
+              variant="divine" 
+              size="lg" 
+              className="text-lg px-8 py-4"
+            >
+              <Users className="mr-2 h-5 w-5" />
+              Register as Participant
+            </Button>
+          </Link>
+          <Link to="/register-volunteer">
+            <Button 
+              variant="sacred" 
+              size="lg" 
+              className="text-lg px-8 py-4"
+            >
+              <Mountain className="mr-2 h-5 w-5" />
+              Volunteer for Yatra
+            </Button>
+          </Link>
         </div>
 
         {/* Sacred Chant */}

@@ -27,6 +27,7 @@ export type Database = {
           id: string
           medical_conditions: string | null
           phone: string
+          time_slot: string
           updated_at: string
         }
         Insert: {
@@ -41,6 +42,7 @@ export type Database = {
           id?: string
           medical_conditions?: string | null
           phone: string
+          time_slot?: string
           updated_at?: string
         }
         Update: {
@@ -55,6 +57,7 @@ export type Database = {
           id?: string
           medical_conditions?: string | null
           phone?: string
+          time_slot?: string
           updated_at?: string
         }
         Relationships: []
@@ -106,7 +109,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      check_slot_capacity: {
+        Args: { slot_time: string }
+        Returns: number
+      }
     }
     Enums: {
       [_ in never]: never
