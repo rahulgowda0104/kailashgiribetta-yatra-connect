@@ -144,7 +144,7 @@ const EventDetails = () => {
                 {guidelines.map((guideline, index) => (
                   <div key={index} className="flex items-start gap-3 p-4 bg-secondary/20 rounded-lg">
                     <div className="bg-saffron text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">
-                      {index + 1}
+                      🔱
                     </div>
                     <p className="text-foreground">{guideline}</p>
                   </div>

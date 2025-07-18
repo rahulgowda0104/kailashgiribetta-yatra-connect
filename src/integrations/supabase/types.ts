@@ -62,48 +62,6 @@ export type Database = {
         }
         Relationships: []
       }
-      volunteer_registrations: {
-        Row: {
-          availability: string
-          created_at: string
-          email: string
-          full_name: string
-          id: string
-          motivation: string
-          phone: string
-          preferred_role: string
-          previous_experience: string | null
-          skills_qualifications: string | null
-          updated_at: string
-        }
-        Insert: {
-          availability: string
-          created_at?: string
-          email: string
-          full_name: string
-          id?: string
-          motivation: string
-          phone: string
-          preferred_role: string
-          previous_experience?: string | null
-          skills_qualifications?: string | null
-          updated_at?: string
-        }
-        Update: {
-          availability?: string
-          created_at?: string
-          email?: string
-          full_name?: string
-          id?: string
-          motivation?: string
-          phone?: string
-          preferred_role?: string
-          previous_experience?: string | null
-          skills_qualifications?: string | null
-          updated_at?: string
-        }
-        Relationships: []
-      }
     }
     Views: {
       [_ in never]: never

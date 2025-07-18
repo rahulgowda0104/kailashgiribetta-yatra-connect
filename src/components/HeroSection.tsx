@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Mountain, Users, Calendar, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroImage from "@/assets/kailashgiribetta-hero.jpg";
+
 
 const HeroSection = () => {
   const scrollToSection = (sectionId: string) => {
@@ -14,7 +14,7 @@ const HeroSection = () => {
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
+        style={{ backgroundImage: 'url(/lovable-uploads/cfe8eafd-3b9a-4fca-9cbb-cee90069d394.png)' }}
       >
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
       </div>
