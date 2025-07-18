@@ -7,25 +7,19 @@ const ContactSection = () => {
     {
       icon: Phone,
       title: "Phone",
-      details: ["+91 98765 43210", "+91 87654 32109"],
-      action: "Call Now"
+      details: ["+91 72594 26555"],
+      action: ""
     },
     {
       icon: Mail,
       title: "Email",
-      details: ["info@kailashgiribettayatra.org", "volunteer@kailashgiribettayatra.org"],
-      action: "Send Email"
+      details: ["kanwariyayatra2025@gmail.com"],
+      action: ""
     },
     {
       icon: MapPin,
       title: "Office Address",
-      details: ["Chintamani, Karnataka", "Near Bus Stand"],
-      action: "Get Directions"
-    },
-    {
-      icon: Clock,
-      title: "Office Hours",
-      details: ["Monday - Saturday: 9 AM - 6 PM", "Sunday: 10 AM - 4 PM"],
+      details: ["narayanahalli cross towards kailasagiribetta", "Chintamani, Karnataka"],
       action: ""
     }
   ];
@@ -44,9 +38,9 @@ const ContactSection = () => {
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto">
-          {/* Contact Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="max-w-6xl mx-auto">
+            {/* Contact Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {contactInfo.map((contact, index) => (
               <Card key={index} className="bg-white/90 backdrop-blur-sm border border-saffron/20 hover:shadow-divine transition-all duration-300 hover:scale-105">
                 <CardHeader className="text-center">
@@ -84,15 +78,15 @@ const ContactSection = () => {
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
                     <Phone className="h-5 w-5" />
-                    <span>24/7 Helpline: +91 98765 43210</span>
+                    <span>24/7 Helpline: +91 72594 26555</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Mail className="h-5 w-5" />
-                    <span>info@kailashgiribettayatra.org</span>
+                    <span>kanwariyayatra2025@gmail.com</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <MapPin className="h-5 w-5" />
-                    <span>Chintamani, Karnataka</span>
+                    <span>narayanahalli cross towards kailasagiribetta, Chintamani, Karnataka</span>
                   </div>
                 </div>
               </CardContent>
@@ -114,19 +108,29 @@ const ContactSection = () => {
                 </Button>
                 
                 {/* Social Media */}
-                <div className="pt-4 border-t border-saffron/20">
-                  <h4 className="font-semibold text-foreground mb-3">Follow Us</h4>
-                  <div className="flex gap-3">
-                    <Button variant="outline" size="sm" className="flex-1">
-                      <Facebook className="h-4 w-4 mr-2" />
-                      Facebook
-                    </Button>
-                    <Button variant="outline" size="sm" className="flex-1">
-                      <Instagram className="h-4 w-4 mr-2" />
-                      Instagram
-                    </Button>
+                  <div className="pt-4 border-t border-saffron/20">
+                    <h4 className="font-semibold text-foreground mb-3">Follow Us</h4>
+                    <div className="flex gap-3">
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        className="flex-1"
+                        onClick={() => window.open('https://www.facebook.com/share/16rkg4Cf4t/', '_blank')}
+                      >
+                        <Facebook className="h-4 w-4 mr-2" />
+                        Facebook
+                      </Button>
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        className="flex-1"
+                        onClick={() => window.open('https://www.instagram.com/u2v.agency?igsh=MWFvc2tiMTh6bXc0YQ==', '_blank')}
+                      >
+                        <Instagram className="h-4 w-4 mr-2" />
+                        Instagram
+                      </Button>
+                    </div>
                   </div>
-                </div>
               </CardContent>
             </Card>
           </div>
