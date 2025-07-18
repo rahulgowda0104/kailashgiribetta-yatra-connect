@@ -24,7 +24,7 @@ const HeroSection = () => {
         {/* Sacred Greeting */}
         <div className="mb-6 animate-fade-in">
           <h1 className="text-6xl md:text-8xl font-bold mb-4 bg-gradient-sunrise bg-clip-text text-transparent">
-            JAI BHOLENATH!
+            HARA HARA MAHADEV!
           </h1>
           <div className="w-24 h-1 bg-gradient-sacred mx-auto mb-4"></div>
         </div>
