@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,7 +6,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Users, Heart, Phone, Mail, MapPin, User } from "lucide-react";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Users, Heart, Phone, Mail, MapPin, User, Calendar, Clock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -20,10 +21,62 @@ const RegistrationSection = () => {
     gender: "",
     emergencyContact: "",
     medicalConditions: "",
-    agreedToTerms: false
+    agreedToTerms: false,
+    timeSlot: ""
   });
 
+  const [slotCounts, setSlotCounts] = useState<{[key: string]: number}>({});
   const { toast } = useToast();
+
+  const timeSlots = [
+    // Week 1
+    { value: "2024-07-26", label: "26th July 2024 - Week 1" },
+    { value: "2024-07-27", label: "27th July 2024 - Week 1" },
+    { value: "2024-07-28", label: "28th July 2024 - Week 1" },
+    // Week 2
+    { value: "2024-08-02", label: "2nd August 2024 - Week 2" },
+    { value: "2024-08-03", label: "3rd August 2024 - Week 2" },
+    { value: "2024-08-04", label: "4th August 2024 - Week 2" },
+    // Week 3
+    { value: "2024-08-09", label: "9th August 2024 - Week 3" },
+    { value: "2024-08-10", label: "10th August 2024 - Week 3" },
+    { value: "2024-08-11", label: "11th August 2024 - Week 3" },
+    // Week 4
+    { value: "2024-08-16", label: "16th August 2024 - Week 4" },
+    { value: "2024-08-17", label: "17th August 2024 - Week 4" },
+    { value: "2024-08-18", label: "18th August 2024 - Week 4" },
+    // Week 5
+    { value: "2024-08-23", label: "23rd August 2024 - Week 5" },
+    { value: "2024-08-24", label: "24th August 2024 - Week 5" },
+    { value: "2024-08-25", label: "25th August 2024 - Week 5" },
+  ];
+
+  useEffect(() => {
+    fetchSlotCounts();
+  }, []);
+
+  const fetchSlotCounts = async () => {
+    try {
+      const counts: {[key: string]: number} = {};
+      
+      for (const slot of timeSlots) {
+        const { data, error } = await supabase.rpc('check_slot_capacity', {
+          slot_time: slot.value
+        });
+        
+        if (error) {
+          console.error('Error fetching slot count:', error);
+          counts[slot.value] = 0;
+        } else {
+          counts[slot.value] = data || 0;
+        }
+      }
+      
+      setSlotCounts(counts);
+    } catch (error) {
+      console.error('Error fetching slot counts:', error);
+    }
+  };
 
   const handleInputChange = (field: string, value: string | boolean) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -36,6 +89,24 @@ const RegistrationSection = () => {
         title: "Agreement Required",
         description: "Please agree to the terms and guidelines before registering.",
         variant: "destructive"
+      });
+      return;
+    }
+
+    if (!formData.timeSlot) {
+      toast({
+        title: "Date Required",
+        description: "Please select a date for your registration.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (slotCounts[formData.timeSlot] >= 200) {
+      toast({
+        title: "Date Full",
+        description: "This date is fully booked. Please select another date.",
+        variant: "destructive",
       });
       return;
     }
@@ -53,7 +124,8 @@ const RegistrationSection = () => {
             address: formData.address,
             emergency_contact: formData.emergencyContact,
             medical_conditions: formData.medicalConditions || null,
-            agreed_to_terms: formData.agreedToTerms
+            agreed_to_terms: formData.agreedToTerms,
+            time_slot: formData.timeSlot
           }
         ]);
 
@@ -68,7 +140,7 @@ const RegistrationSection = () => {
 
       toast({
         title: "Registration Successful! 🙏",
-        description: "Har Har Mahadev! Your registration has been submitted. We will contact you soon with further details.",
+        description: `Har Har Mahadev! Your registration for ${formData.timeSlot} has been confirmed.`,
       });
       
       // Reset form
@@ -81,8 +153,12 @@ const RegistrationSection = () => {
         gender: "",
         emergencyContact: "",
         medicalConditions: "",
-        agreedToTerms: false
+        agreedToTerms: false,
+        timeSlot: ""
       });
+
+      // Refresh slot counts
+      fetchSlotCounts();
     } catch (error) {
       toast({
         title: "Registration Failed",
@@ -116,6 +192,51 @@ const RegistrationSection = () => {
             </CardHeader>
             <CardContent className="p-8">
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Date Selection */}
+                <div className="space-y-4">
+                  <Label className="text-base font-semibold flex items-center gap-2">
+                    <Calendar className="h-4 w-4 text-saffron" />
+                    Select Date *
+                  </Label>
+                  <RadioGroup 
+                    value={formData.timeSlot} 
+                    onValueChange={(value) => handleInputChange('timeSlot', value)}
+                    className="space-y-3"
+                  >
+                    {timeSlots.map((slot) => {
+                      const isSlotFull = slotCounts[slot.value] >= 200;
+                      const availableSpots = 200 - slotCounts[slot.value];
+                      
+                      return (
+                        <div key={slot.value} className="flex items-center space-x-3 p-4 rounded-lg border border-saffron/20">
+                          <RadioGroupItem 
+                            value={slot.value} 
+                            id={slot.value}
+                            disabled={isSlotFull}
+                          />
+                          <Label 
+                            htmlFor={slot.value} 
+                            className={`flex-1 cursor-pointer ${isSlotFull ? 'opacity-50' : ''}`}
+                          >
+                            <div className="flex justify-between items-center">
+                              <div className="flex items-center space-x-2">
+                                <Clock className="h-4 w-4 text-saffron" />
+                                <span className="font-medium">{slot.label}</span>
+                              </div>
+                              <div className="flex items-center space-x-2 text-sm">
+                                <Users className="h-4 w-4" />
+                                <span className={isSlotFull ? "text-destructive font-semibold" : "text-muted-foreground"}>
+                                  {isSlotFull ? "FULL" : `${availableSpots} spots left`}
+                                </span>
+                              </div>
+                            </div>
+                          </Label>
+                        </div>
+                      );
+                    })}
+                  </RadioGroup>
+                </div>
+
                 {/* Personal Information */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>

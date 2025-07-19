@@ -40,18 +40,31 @@ const ParticipantRegistration = () => {
     timeSlot: "",
   });
 
-  const [slotCounts, setSlotCounts] = useState<{[key: string]: number}>({
-    "8:00 AM": 0,
-    "10:00 AM": 0,
-    "12:00 PM": 0,
-  });
+  const [slotCounts, setSlotCounts] = useState<{[key: string]: number}>({});
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const timeSlots = [
-    { value: "8:00 AM", label: "8:00 AM - Morning Session" },
-    { value: "10:00 AM", label: "10:00 AM - Mid-Morning Session" },
-    { value: "12:00 PM", label: "12:00 PM - Noon Session" },
+    // Week 1
+    { value: "2024-07-26", label: "26th July 2024 - Week 1" },
+    { value: "2024-07-27", label: "27th July 2024 - Week 1" },
+    { value: "2024-07-28", label: "28th July 2024 - Week 1" },
+    // Week 2
+    { value: "2024-08-02", label: "2nd August 2024 - Week 2" },
+    { value: "2024-08-03", label: "3rd August 2024 - Week 2" },
+    { value: "2024-08-04", label: "4th August 2024 - Week 2" },
+    // Week 3
+    { value: "2024-08-09", label: "9th August 2024 - Week 3" },
+    { value: "2024-08-10", label: "10th August 2024 - Week 3" },
+    { value: "2024-08-11", label: "11th August 2024 - Week 3" },
+    // Week 4
+    { value: "2024-08-16", label: "16th August 2024 - Week 4" },
+    { value: "2024-08-17", label: "17th August 2024 - Week 4" },
+    { value: "2024-08-18", label: "18th August 2024 - Week 4" },
+    // Week 5
+    { value: "2024-08-23", label: "23rd August 2024 - Week 5" },
+    { value: "2024-08-24", label: "24th August 2024 - Week 5" },
+    { value: "2024-08-25", label: "25th August 2024 - Week 5" },
   ];
 
   useEffect(() => {
@@ -102,17 +115,17 @@ const ParticipantRegistration = () => {
 
     if (!formData.timeSlot) {
       toast({
-        title: "Time Slot Required",
-        description: "Please select a time slot for your registration.",
+        title: "Date Required",
+        description: "Please select a date for your registration.",
         variant: "destructive",
       });
       return;
     }
 
-    if (slotCounts[formData.timeSlot] >= 100) {
+    if (slotCounts[formData.timeSlot] >= 200) {
       toast({
-        title: "Slot Full",
-        description: "This time slot is fully booked. Please select another slot.",
+        title: "Date Full",
+        description: "This date is fully booked. Please select another date.",
         variant: "destructive",
       });
       return;
@@ -144,7 +157,7 @@ const ParticipantRegistration = () => {
 
       toast({
         title: "Registration Successful!",
-        description: `Your registration for ${formData.timeSlot} slot has been confirmed. Har Har Mahadev!`,
+        description: `Your registration for ${formData.timeSlot} has been confirmed. Har Har Mahadev!`,
       });
 
       // Reset form
@@ -196,17 +209,17 @@ const ParticipantRegistration = () => {
 
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Time Slot Selection */}
+              {/* Date Selection */}
               <div className="space-y-4">
-                <Label className="text-base font-semibold">Select Time Slot</Label>
+                <Label className="text-base font-semibold">Select Date</Label>
                 <RadioGroup 
                   value={formData.timeSlot} 
                   onValueChange={(value) => handleInputChange('timeSlot', value)}
                   className="space-y-3"
                 >
                   {timeSlots.map((slot) => {
-                    const isSlotFull = slotCounts[slot.value] >= 100;
-                    const availableSpots = 100 - slotCounts[slot.value];
+                    const isSlotFull = slotCounts[slot.value] >= 200;
+                    const availableSpots = 200 - slotCounts[slot.value];
                     
                     return (
                       <div key={slot.value} className="flex items-center space-x-3 p-4 rounded-lg border">
