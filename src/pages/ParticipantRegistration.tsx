@@ -44,57 +44,132 @@ const ParticipantRegistration = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const timeSlots = [
+  const dateSlots = [
     // Week 1
-    { value: "2025-07-26-08:00", label: "26th July 2025 - Week 1 - 8:00 AM" },
-    { value: "2025-07-26-10:00", label: "26th July 2025 - Week 1 - 10:00 AM" },
-    { value: "2025-07-26-12:00", label: "26th July 2025 - Week 1 - 12:00 PM" },
-    { value: "2025-07-27-08:00", label: "27th July 2025 - Week 1 - 8:00 AM" },
-    { value: "2025-07-27-10:00", label: "27th July 2025 - Week 1 - 10:00 AM" },
-    { value: "2025-07-27-12:00", label: "27th July 2025 - Week 1 - 12:00 PM" },
-    { value: "2025-07-28-08:00", label: "28th July 2025 - Week 1 - 8:00 AM" },
-    { value: "2025-07-28-10:00", label: "28th July 2025 - Week 1 - 10:00 AM" },
-    { value: "2025-07-28-12:00", label: "28th July 2025 - Week 1 - 12:00 PM" },
+    {
+      date: "26th July 2025 - Week 1",
+      slots: [
+        { value: "2025-07-26-08:00", time: "8:00 AM" },
+        { value: "2025-07-26-10:00", time: "10:00 AM" },
+        { value: "2025-07-26-12:00", time: "12:00 PM" },
+      ]
+    },
+    {
+      date: "27th July 2025 - Week 1",
+      slots: [
+        { value: "2025-07-27-08:00", time: "8:00 AM" },
+        { value: "2025-07-27-10:00", time: "10:00 AM" },
+        { value: "2025-07-27-12:00", time: "12:00 PM" },
+      ]
+    },
+    {
+      date: "28th July 2025 - Week 1",
+      slots: [
+        { value: "2025-07-28-08:00", time: "8:00 AM" },
+        { value: "2025-07-28-10:00", time: "10:00 AM" },
+        { value: "2025-07-28-12:00", time: "12:00 PM" },
+      ]
+    },
     // Week 2
-    { value: "2025-08-02-08:00", label: "2nd August 2025 - Week 2 - 8:00 AM" },
-    { value: "2025-08-02-10:00", label: "2nd August 2025 - Week 2 - 10:00 AM" },
-    { value: "2025-08-02-12:00", label: "2nd August 2025 - Week 2 - 12:00 PM" },
-    { value: "2025-08-03-08:00", label: "3rd August 2025 - Week 2 - 8:00 AM" },
-    { value: "2025-08-03-10:00", label: "3rd August 2025 - Week 2 - 10:00 AM" },
-    { value: "2025-08-03-12:00", label: "3rd August 2025 - Week 2 - 12:00 PM" },
-    { value: "2025-08-04-08:00", label: "4th August 2025 - Week 2 - 8:00 AM" },
-    { value: "2025-08-04-10:00", label: "4th August 2025 - Week 2 - 10:00 AM" },
-    { value: "2025-08-04-12:00", label: "4th August 2025 - Week 2 - 12:00 PM" },
+    {
+      date: "2nd August 2025 - Week 2",
+      slots: [
+        { value: "2025-08-02-08:00", time: "8:00 AM" },
+        { value: "2025-08-02-10:00", time: "10:00 AM" },
+        { value: "2025-08-02-12:00", time: "12:00 PM" },
+      ]
+    },
+    {
+      date: "3rd August 2025 - Week 2",
+      slots: [
+        { value: "2025-08-03-08:00", time: "8:00 AM" },
+        { value: "2025-08-03-10:00", time: "10:00 AM" },
+        { value: "2025-08-03-12:00", time: "12:00 PM" },
+      ]
+    },
+    {
+      date: "4th August 2025 - Week 2",
+      slots: [
+        { value: "2025-08-04-08:00", time: "8:00 AM" },
+        { value: "2025-08-04-10:00", time: "10:00 AM" },
+        { value: "2025-08-04-12:00", time: "12:00 PM" },
+      ]
+    },
     // Week 3
-    { value: "2025-08-09-08:00", label: "9th August 2025 - Week 3 - 8:00 AM" },
-    { value: "2025-08-09-10:00", label: "9th August 2025 - Week 3 - 10:00 AM" },
-    { value: "2025-08-09-12:00", label: "9th August 2025 - Week 3 - 12:00 PM" },
-    { value: "2025-08-10-08:00", label: "10th August 2025 - Week 3 - 8:00 AM" },
-    { value: "2025-08-10-10:00", label: "10th August 2025 - Week 3 - 10:00 AM" },
-    { value: "2025-08-10-12:00", label: "10th August 2025 - Week 3 - 12:00 PM" },
-    { value: "2025-08-11-08:00", label: "11th August 2025 - Week 3 - 8:00 AM" },
-    { value: "2025-08-11-10:00", label: "11th August 2025 - Week 3 - 10:00 AM" },
-    { value: "2025-08-11-12:00", label: "11th August 2025 - Week 3 - 12:00 PM" },
+    {
+      date: "9th August 2025 - Week 3",
+      slots: [
+        { value: "2025-08-09-08:00", time: "8:00 AM" },
+        { value: "2025-08-09-10:00", time: "10:00 AM" },
+        { value: "2025-08-09-12:00", time: "12:00 PM" },
+      ]
+    },
+    {
+      date: "10th August 2025 - Week 3",
+      slots: [
+        { value: "2025-08-10-08:00", time: "8:00 AM" },
+        { value: "2025-08-10-10:00", time: "10:00 AM" },
+        { value: "2025-08-10-12:00", time: "12:00 PM" },
+      ]
+    },
+    {
+      date: "11th August 2025 - Week 3",
+      slots: [
+        { value: "2025-08-11-08:00", time: "8:00 AM" },
+        { value: "2025-08-11-10:00", time: "10:00 AM" },
+        { value: "2025-08-11-12:00", time: "12:00 PM" },
+      ]
+    },
     // Week 4
-    { value: "2025-08-16-08:00", label: "16th August 2025 - Week 4 - 8:00 AM" },
-    { value: "2025-08-16-10:00", label: "16th August 2025 - Week 4 - 10:00 AM" },
-    { value: "2025-08-16-12:00", label: "16th August 2025 - Week 4 - 12:00 PM" },
-    { value: "2025-08-17-08:00", label: "17th August 2025 - Week 4 - 8:00 AM" },
-    { value: "2025-08-17-10:00", label: "17th August 2025 - Week 4 - 10:00 AM" },
-    { value: "2025-08-17-12:00", label: "17th August 2025 - Week 4 - 12:00 PM" },
-    { value: "2025-08-18-08:00", label: "18th August 2025 - Week 4 - 8:00 AM" },
-    { value: "2025-08-18-10:00", label: "18th August 2025 - Week 4 - 10:00 AM" },
-    { value: "2025-08-18-12:00", label: "18th August 2025 - Week 4 - 12:00 PM" },
+    {
+      date: "16th August 2025 - Week 4",
+      slots: [
+        { value: "2025-08-16-08:00", time: "8:00 AM" },
+        { value: "2025-08-16-10:00", time: "10:00 AM" },
+        { value: "2025-08-16-12:00", time: "12:00 PM" },
+      ]
+    },
+    {
+      date: "17th August 2025 - Week 4",
+      slots: [
+        { value: "2025-08-17-08:00", time: "8:00 AM" },
+        { value: "2025-08-17-10:00", time: "10:00 AM" },
+        { value: "2025-08-17-12:00", time: "12:00 PM" },
+      ]
+    },
+    {
+      date: "18th August 2025 - Week 4",
+      slots: [
+        { value: "2025-08-18-08:00", time: "8:00 AM" },
+        { value: "2025-08-18-10:00", time: "10:00 AM" },
+        { value: "2025-08-18-12:00", time: "12:00 PM" },
+      ]
+    },
     // Week 5
-    { value: "2025-08-23-08:00", label: "23rd August 2025 - Week 5 - 8:00 AM" },
-    { value: "2025-08-23-10:00", label: "23rd August 2025 - Week 5 - 10:00 AM" },
-    { value: "2025-08-23-12:00", label: "23rd August 2025 - Week 5 - 12:00 PM" },
-    { value: "2025-08-24-08:00", label: "24th August 2025 - Week 5 - 8:00 AM" },
-    { value: "2025-08-24-10:00", label: "24th August 2025 - Week 5 - 10:00 AM" },
-    { value: "2025-08-24-12:00", label: "24th August 2025 - Week 5 - 12:00 PM" },
-    { value: "2025-08-25-08:00", label: "25th August 2025 - Week 5 - 8:00 AM" },
-    { value: "2025-08-25-10:00", label: "25th August 2025 - Week 5 - 10:00 AM" },
-    { value: "2025-08-25-12:00", label: "25th August 2025 - Week 5 - 12:00 PM" },
+    {
+      date: "23rd August 2025 - Week 5",
+      slots: [
+        { value: "2025-08-23-08:00", time: "8:00 AM" },
+        { value: "2025-08-23-10:00", time: "10:00 AM" },
+        { value: "2025-08-23-12:00", time: "12:00 PM" },
+      ]
+    },
+    {
+      date: "24th August 2025 - Week 5",
+      slots: [
+        { value: "2025-08-24-08:00", time: "8:00 AM" },
+        { value: "2025-08-24-10:00", time: "10:00 AM" },
+        { value: "2025-08-24-12:00", time: "12:00 PM" },
+      ]
+    },
+    {
+      date: "25th August 2025 - Week 5",
+      slots: [
+        { value: "2025-08-25-08:00", time: "8:00 AM" },
+        { value: "2025-08-25-10:00", time: "10:00 AM" },
+        { value: "2025-08-25-12:00", time: "12:00 PM" },
+      ]
+    },
   ];
 
   useEffect(() => {
@@ -105,7 +180,10 @@ const ParticipantRegistration = () => {
     try {
       const counts: {[key: string]: number} = {};
       
-      for (const slot of timeSlots) {
+      // Flatten all slots from dateSlots
+      const allSlots = dateSlots.flatMap(dateSlot => dateSlot.slots);
+      
+      for (const slot of allSlots) {
         const { data, error } = await supabase.rpc('check_slot_capacity', {
           slot_time: slot.value
         });
@@ -245,39 +323,48 @@ const ParticipantRegistration = () => {
                 <RadioGroup 
                   value={formData.timeSlot} 
                   onValueChange={(value) => handleInputChange('timeSlot', value)}
-                  className="space-y-3"
+                  className="space-y-6"
                 >
-                  {timeSlots.map((slot) => {
-                    const isSlotFull = slotCounts[slot.value] >= 200;
-                    const availableSpots = 200 - slotCounts[slot.value];
-                    
-                    return (
-                      <div key={slot.value} className="flex items-center space-x-3 p-4 rounded-lg border">
-                        <RadioGroupItem 
-                          value={slot.value} 
-                          id={slot.value}
-                          disabled={isSlotFull}
-                        />
-                        <Label 
-                          htmlFor={slot.value} 
-                          className={`flex-1 cursor-pointer ${isSlotFull ? 'opacity-50' : ''}`}
-                        >
-                          <div className="flex justify-between items-center">
-                            <div className="flex items-center space-x-2">
-                              <Clock className="h-4 w-4 text-primary" />
-                              <span className="font-medium">{slot.label}</span>
+                  {dateSlots.map((dateSlot) => (
+                    <div key={dateSlot.date} className="space-y-3">
+                      <h3 className="text-lg font-semibold text-primary border-b pb-2">
+                        {dateSlot.date}
+                      </h3>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        {dateSlot.slots.map((slot) => {
+                          const isSlotFull = slotCounts[slot.value] >= 200;
+                          const availableSpots = 200 - (slotCounts[slot.value] || 0);
+                          
+                          return (
+                            <div key={slot.value} className="flex items-center space-x-3 p-4 rounded-lg border hover:border-primary/50 transition-colors">
+                              <RadioGroupItem 
+                                value={slot.value} 
+                                id={slot.value}
+                                disabled={isSlotFull}
+                              />
+                              <Label 
+                                htmlFor={slot.value} 
+                                className={`flex-1 cursor-pointer ${isSlotFull ? 'opacity-50' : ''}`}
+                              >
+                                <div className="space-y-2">
+                                  <div className="flex items-center space-x-2">
+                                    <Clock className="h-4 w-4 text-primary" />
+                                    <span className="font-medium">{slot.time}</span>
+                                  </div>
+                                  <div className="flex items-center space-x-2 text-sm">
+                                    <Users className="h-4 w-4" />
+                                    <span className={isSlotFull ? "text-destructive font-semibold" : "text-muted-foreground"}>
+                                      {isSlotFull ? "FULL" : `${availableSpots} spots left`}
+                                    </span>
+                                  </div>
+                                </div>
+                              </Label>
                             </div>
-                            <div className="flex items-center space-x-2 text-sm">
-                              <Users className="h-4 w-4" />
-                              <span className={isSlotFull ? "text-destructive font-semibold" : "text-muted-foreground"}>
-                                {isSlotFull ? "FULL" : `${availableSpots} spots left`}
-                              </span>
-                            </div>
-                          </div>
-                        </Label>
+                          );
+                        })}
                       </div>
-                    );
-                  })}
+                    </div>
+                  ))}
                 </RadioGroup>
               </div>
 
