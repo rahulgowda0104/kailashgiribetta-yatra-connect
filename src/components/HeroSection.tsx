@@ -1,24 +1,13 @@
 
 import { Button } from "@/components/ui/button";
-import { Calendar as CalendarComponent } from "@/components/ui/calendar";
 import { Mountain, Users, Calendar, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 
 const HeroSection = () => {
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
   };
-
-  // Available dates for the Yatra
-  const availableDates = [
-    new Date(2025, 6, 26), // July 26, 2025
-    new Date(2025, 6, 27), // July 27, 2025
-    new Date(2025, 6, 28), // July 28, 2025
-  ];
-
-  const [selectedDate, setSelectedDate] = useState<Date>();
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -53,55 +42,22 @@ const HeroSection = () => {
           A divine pilgrimage to the sacred Shiva Cave Temple at Kailashgiribetta.
         </p>
 
-        {/* Calendar and Information Cards */}
-        <div className="mb-12 max-w-6xl mx-auto">
-          {/* Calendar Section */}
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 mb-8">
-            <div className="flex items-center justify-center mb-4">
-              <Calendar className="h-8 w-8 text-saffron mr-3" />
-              <h3 className="font-semibold text-2xl">Select Yatra Date</h3>
-            </div>
-            <div className="flex justify-center">
-              <CalendarComponent
-                mode="single"
-                selected={selectedDate}
-                onSelect={setSelectedDate}
-                modifiers={{
-                  available: availableDates,
-                }}
-                modifiersStyles={{
-                  available: { 
-                    backgroundColor: 'hsl(var(--saffron))', 
-                    color: 'white',
-                    fontWeight: 'bold'
-                  }
-                }}
-                disabled={(date) => !availableDates.some(
-                  availableDate => 
-                    date.getDate() === availableDate.getDate() &&
-                    date.getMonth() === availableDate.getMonth() &&
-                    date.getFullYear() === availableDate.getFullYear()
-                )}
-                className="bg-white rounded-md text-black"
-              />
-            </div>
-            <p className="text-center text-gray-200 mt-4">
-              Available dates are highlighted in orange. Click to select your preferred date.
-            </p>
+        {/* Key Information Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto">
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+            <Calendar className="h-8 w-8 text-saffron mx-auto mb-3" />
+            <h3 className="font-semibold text-lg mb-2">Date</h3>
+            <p className="text-gray-200">July 26, 2025</p>
           </div>
-
-          {/* Information Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-              <MapPin className="h-8 w-8 text-saffron mx-auto mb-3" />
-              <h3 className="font-semibold text-lg mb-2">Starting Point</h3>
-              <p className="text-gray-200">Narayanhalli Cross</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-              <Mountain className="h-8 w-8 text-saffron mx-auto mb-3" />
-              <h3 className="font-semibold text-lg mb-2">Destination</h3>
-              <p className="text-gray-200">Kailasagiri Guhanthaara Devalaya, Dakshina Kailasa Kshethra</p>
-            </div>
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+            <MapPin className="h-8 w-8 text-saffron mx-auto mb-3" />
+            <h3 className="font-semibold text-lg mb-2">Starting Point</h3>
+            <p className="text-gray-200">Narayanhalli Cross</p>
+          </div>
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+            <Mountain className="h-8 w-8 text-saffron mx-auto mb-3" />
+            <h3 className="font-semibold text-lg mb-2">Destination</h3>
+            <p className="text-gray-200">Kailasagiri Guhanthaara Devalaya, Dakshina Kailasa Kshethra</p>
           </div>
         </div>
 
