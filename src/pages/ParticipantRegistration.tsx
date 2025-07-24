@@ -114,9 +114,34 @@ const ParticipantRegistration = () => {
         throw error;
       }
 
+      // Send confirmation email
+      if (formData.email) {
+        try {
+          const emailResponse = await supabase.functions.invoke('send-confirmation-email', {
+            body: {
+              full_name: formData.fullName,
+              email: formData.email,
+              phone: formData.phone,
+              age: parseInt(formData.age),
+              gender: formData.gender,
+              address: formData.address,
+              emergency_contact: formData.emergencyContact,
+              medical_conditions: formData.medicalConditions,
+              selected_date: format(formData.selectedDate, "MMMM dd, yyyy")
+            }
+          });
+
+          if (emailResponse.error) {
+            console.error('Email sending failed:', emailResponse.error);
+          }
+        } catch (emailError) {
+          console.error('Email function error:', emailError);
+        }
+      }
+
       toast({
         title: "Registration Successful!",
-        description: `Your registration for ${format(formData.selectedDate, "MMMM dd, yyyy")} has been confirmed. Har Har Mahadev!`,
+        description: `Your registration for ${format(formData.selectedDate, "MMMM dd, yyyy")} has been confirmed. You will receive a confirmation email shortly.`,
       });
 
       // Reset form
