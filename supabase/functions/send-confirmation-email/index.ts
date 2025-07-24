@@ -32,7 +32,7 @@ const handler = async (req: Request): Promise<Response> => {
     const registrationData: ConfirmationEmailRequest = await req.json();
 
     const emailResponse = await resend.emails.send({
-      from: "Kanwariya Yatra <onboarding@resend.dev>",
+      from: "Kanwariya Yatra <noreply@yourdomain.com>",
       to: [registrationData.email],
       subject: "Kanwariya Yatra Registration Confirmation",
       html: `
